@@ -1,0 +1,23 @@
+% LED PWM Brightness Lookup Table
+% Marko Oklobdžija
+% `20150519u200309`
+
+<!-- vim: set ft=pandoc: -->
+
+# Overview
+
+The aim is to linearize the LED brightness, by providing the lookup
+table which would map duty cycle, that is, current, that is, luminosity,
+to brightness.
+
+# Description
+
+The LED PWM lookup table index change function is a triangle wave, with
+period of 16 seconds.
+
+PWM duty cycle resolution is 10 bits.
+
+# Hardware Setup
+
+GP2 pin is used as PWM output. Other pins are unused (input).
+

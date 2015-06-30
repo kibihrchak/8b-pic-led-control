@@ -1,0 +1,21 @@
+% Hello, LED PWM!
+% Marko Oklobdžija
+% `20150519u200309`
+
+<!-- vim: set ft=pandoc: -->
+
+# Overview
+
+This project is a basic test of LED PWM control.
+
+# Description
+
+The LED PWM duty cycle change function is a triangle wave, with period
+of 8 seconds.
+
+PWM duty cycle resolution is 8 bits.
+
+# Hardware Setup
+
+GP2 pin is used as PWM output. Other pins are unused (input).
+
