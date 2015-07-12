@@ -1,4 +1,4 @@
-% LED PWM Brightness Lookup Table Smoothing - Version 2
+% LED PWM Brightness Square Function Transition
 % Marko Oklobdžija
 % `20150630u175146`
 
@@ -11,10 +11,15 @@ introducing transition smoothing.
 
 # Description
 
-The LED PWM lookup table index change function has a period of 8
+The LED PWM lookup table index change function has a period of 4
 seconds. Each half-period consists out of two parts. In the first part
 the output is a square function of time, in the second part, inverse of
 the first part.
+
+Result          Value
+--------------- --------------
+prescaler       32
+TMR0 init val.  14
 
 PWM duty cycle resolution is 10 bits.
 

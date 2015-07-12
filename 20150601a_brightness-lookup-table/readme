@@ -10,10 +10,20 @@ The aim is to linearize the LED brightness, by providing the lookup
 table which would map duty cycle, that is, current, that is, luminosity,
 to brightness.
 
+# Resources
+
+1.  <http://43oh.com/2011/03/emulating-the-macbook-breathing-led-on-the-launchpad/>
+2.  <http://sean.voisen.org/blog/2011/10/breathing-led-with-arduino/>
+
 # Description
 
 The LED PWM lookup table index change function is a triangle wave, with
-period of 16 seconds.
+period of 4 seconds.
+
+Result          Value
+--------------- --------------
+prescaler       32
+TMR0 init val.  14
 
 PWM duty cycle resolution is 10 bits.
 

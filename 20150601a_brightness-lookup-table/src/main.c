@@ -1,7 +1,7 @@
 #include "pwm_lookup_table.h"
 #include <stdint.h>
 
-const uint8_t TRM0_INIT = 11;
+const uint8_t TRM0_INIT = 14;
 enum PWM_DIRECTION_E {INCREMENT, DECREMENT};
 enum PWM_DIRECTION_E pwm_direction = INCREMENT;
 
@@ -65,7 +65,7 @@ void main()
     //  through 512 values, this gives `4000/512ms` period.
     //
 
-    OPTION_REG = 0b11010110;
+    OPTION_REG = 0b11010100;
 
     TMR0 = TRM0_INIT;
 
