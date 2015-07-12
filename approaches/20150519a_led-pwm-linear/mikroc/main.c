@@ -1,4 +1,3 @@
-
 const unsigned short TMR0_INIT = 14;
 enum PWM_DIRECTION_E {ERROR, INCREMENT, DECREMENT};
 enum PWM_DIRECTION_E pwm_direction = INCREMENT;

@@ -1,3 +1,9 @@
+//  # Linear output toggle
+//
+//  This macro specifies that the linear output should be used, and not
+//  the provided lookup table.
+//
+
 #define LINEAR_OUTPUT
 
 #ifndef LINEAR_OUTPUT
@@ -25,6 +31,15 @@ uint8_t pwm_lookup_table_index = 0;
 
 uint8_t ccpr1l_new, ccp1con_new;
 
+
+//  # First order finite difference state
+//
+//  First order finite difference can either be linearly incremented,
+//  can keep the same value, or can be linearly decremented. The state
+//  of the first order finite difference determines the transition
+//  state.
+//
+
 enum DIFFERENCE_STATES_E {
     DS_INCREMENT,
     DS_HOLD,
@@ -32,6 +47,15 @@ enum DIFFERENCE_STATES_E {
 };
 
 enum DIFFERENCE_STATES_E difference_state = DS_INCREMENT;
+
+
+//  # Helper function value types
+//
+//  Function value, and finite differences will all be 2 bytes wide.
+//  Because there are only 256 elements in the lookup table, the
+//  function value needs to be trimmed. The higher byte will be used as
+//  a lookup table entry index.
+//
 
 struct bytes_struct
 {
@@ -49,8 +73,19 @@ union word_union value;
 uint16_t first_difference = 0;
 const uint16_t SECOND_DIFFERENCE = 1;
 
+
+//  # Iteration indices
+//
+//  The first order finite difference state depends on the iteration
+//  number. When incrementing, it will be first put on hold when it
+//  reaches the half of the total number of iterations, and then set to
+//  decrease. This is done in order to have a reverse second order
+//  finite difference in the second part of the half-period.
+//
+
 uint16_t iteration_index = 0;
 const uint16_t HALF_ITERATION_STEPS = 255;
+
 
 //  # Interrupt routine for timer
 //
@@ -204,3 +239,5 @@ void main()
         }
     }
 }
+
+/* vim: set spell: */
